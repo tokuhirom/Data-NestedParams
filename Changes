@@ -2,6 +2,10 @@ Revision history for Perl extension Data-NestedParams
 
 {{$NEXT}}
 
+0.03 2014-03-13T07:49:03Z
+
+    - s/convert_nested_query/expand_nested_params/g
+
 0.02 2014-03-13T07:43:20Z
 
     - Rename to NestedParams.
