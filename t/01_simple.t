@@ -23,7 +23,7 @@ for (blocks) {
 
     diag "--- Testing --- ";
     diag ddf($input);
-    my $got = convert_nested_query($input);
+    my $got = expand_nested_params($input);
     diag ddf($got);
     is_deeply( $got, $expected );
 }

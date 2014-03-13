@@ -7,7 +7,7 @@ our $VERSION = "0.02";
 
 use parent qw(Exporter);
 
-our @EXPORT = qw(convert_nested_query);
+our @EXPORT = qw(expand_nested_params);
 
 # https://github.com/rack/rack/blob/master/lib/rack/utils.rb#L90
 
@@ -60,7 +60,7 @@ sub set_value {
     }
 }
 
-sub convert_nested_query {
+sub expand_nested_params {
     my $ary = shift;
     my $ret = +{};
     while (my ($k, $v) = splice @$ary, 0, 2) {
