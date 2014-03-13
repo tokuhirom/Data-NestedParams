@@ -1,11 +1,15 @@
 use strict;
 use warnings;
 use utf8;
-use Data::Section::TestBase;
-use Test::More;
+use Test::Base::Less;
 use Data::NestedQuery;
 
 use Data::Dumper;
+
+filters {
+    input => [qw(eval)],
+    expected => [qw(eval)],
+};
 
 sub ddf {
     local $Data::Dumper::Terse = 1;
@@ -14,11 +18,8 @@ sub ddf {
 }
 
 for (blocks) {
-    my $input = eval($_->input);
-    die $@ if $@;
-
-    my $expected = eval($_->expected);
-    die $@ if $@;
+    my $input = $_->input;
+    my $expected = $_->expected;
 
     diag "--- Testing --- ";
     diag ddf($input);
