@@ -1,4 +1,4 @@
-name = "Data-NestedQuery"
+name = "Data-NestedParams"
 badges = ["travis"]
 
 [release]

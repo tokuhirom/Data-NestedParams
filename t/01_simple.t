@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use utf8;
 use Test::Base::Less;
-use Data::NestedQuery;
+use Data::NestedParams;
 
 use Data::Dumper;
 

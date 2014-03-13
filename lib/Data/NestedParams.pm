@@ -1,4 +1,4 @@
-package Data::NestedQuery;
+package Data::NestedParams;
 use 5.008005;
 use strict;
 use warnings;
@@ -76,15 +76,15 @@ __END__
 
 =head1 NAME
 
-Data::NestedQuery - It's new $module
+Data::NestedParams - It's new $module
 
 =head1 SYNOPSIS
 
-    use Data::NestedQuery;
+    use Data::NestedParams;
 
 =head1 DESCRIPTION
 
-Data::NestedQuery is ...
+Data::NestedParams is ...
 
 =head1 LICENSE
 

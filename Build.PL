@@ -23,8 +23,8 @@ my %args = (
         'Module::Build' => 0.38,
     },
 
-    name            => 'Data-NestedQuery',
-    module_name     => 'Data::NestedQuery',
+    name            => 'Data-NestedParams',
+    module_name     => 'Data::NestedParams',
     allow_pureperl => 0,
 
     script_files => [glob('script/*'), glob('bin/*')],

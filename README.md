@@ -1,15 +1,15 @@
 [![Build Status](https://travis-ci.org/tokuhirom/Data-NestedQuery.png?branch=master)](https://travis-ci.org/tokuhirom/Data-NestedQuery)
 # NAME
 
-Data::NestedQuery - It's new $module
+Data::NestedParams - It's new $module
 
 # SYNOPSIS
 
-    use Data::NestedQuery;
+    use Data::NestedParams;
 
 # DESCRIPTION
 
-Data::NestedQuery is ...
+Data::NestedParams is ...
 
 # LICENSE
 
