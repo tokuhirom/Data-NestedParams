@@ -54,5 +54,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/tokuhirom/Data-NestedQuery/issues"
+      },
+      "homepage" : "https://github.com/tokuhirom/Data-NestedQuery",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/tokuhirom/Data-NestedQuery.git",
+         "web" : "https://github.com/tokuhirom/Data-NestedQuery"
+      }
+   },
    "version" : "0.01"
 }

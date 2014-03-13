@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/tokuhirom/Data-NestedQuery.png?branch=master)](https://travis-ci.org/tokuhirom/Data-NestedQuery)
 # NAME
 
 Data::NestedQuery - It's new $module
