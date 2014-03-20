@@ -10,6 +10,7 @@ use parent qw(Exporter);
 our @EXPORT = qw(expand_nested_params);
 
 # https://github.com/rack/rack/blob/master/lib/rack/utils.rb#L90
+# 9a74ba3b04f2dabe4741d2d82eae723d440c3aa2
 
 sub parse {
     my $k = shift;
@@ -44,7 +45,15 @@ sub set_value {
             }
         } elsif ($key->[0] eq '@') {
             if (@keys) {
-                $r = \(${$r}->[$key->[1]]);
+                if (defined($$r)) {
+                    if (ref($$r->[@$$r-1]) eq 'HASH' && $keys[0]->[0] eq '%' && not exists $$r->[@$$r-1]->{$keys[0]->[1]}) {
+                        $r = \(${$r}->[@$$r-1]);
+                    } else {
+                        $r = \(${$r}->[0+@$$r]);
+                    }
+                } else {
+                    $r = \(${$r}->[0]);
+                }
             } else { # last
                 push @{$$r}, $v;
             }
@@ -76,15 +85,30 @@ __END__
 
 =head1 NAME
 
-Data::NestedParams - It's new $module
+Data::NestedParams - entry[title]=foo&tags[]=art&tags[]=modern
 
 =head1 SYNOPSIS
 
     use Data::NestedParams;
 
+    my $expanded = expand_nested_params(
+        [
+            'entry[title]' => 'foo',
+            'tags[]' => 'art',
+            'tags[]' => 'modern',
+        ]
+    );
+    # $expanded = { entry => {title => 'foo'}, tags => ['art', 'modern'] };
+
 =head1 DESCRIPTION
 
-Data::NestedParams is ...
+Ruby on Rails has a nice feature to create nested parameters that help with the organization of data in a form - parameters can be an arbitrarily deep nested structure.
+
+The way this structure is denoted is that when you construct a form the field names have a special syntax which is parsed.
+
+=head1 TODO
+
+Support C<collapse_nested_params()>.
 
 =head1 LICENSE
 
@@ -96,6 +120,11 @@ it under the same terms as Perl itself.
 =head1 AUTHOR
 
 Tokuhiro Matsuno E<lt>tokuhirom@gmail.comE<gt>
+
+=head1 SEE ALSO
+
+L<Catalyst::Plugin::Params::Nested>, L<CGI::Expand>
+L<https://github.com/rack/rack/blob/master/lib/rack/utils.rb#L90>
 
 =cut
 

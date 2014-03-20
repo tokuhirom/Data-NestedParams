@@ -1,10 +1,10 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "entry[title]=foo&tags[]=art&tags[]=modern",
    "author" : [
       "Tokuhiro Matsuno <tokuhirom@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.11.1, CPAN::Meta::Converter version 2.133380",
+   "generated_by" : "Minilla/v0.12.0, CPAN::Meta::Converter version 2.133380",
    "license" : [
       "perl_5"
    ],
@@ -56,13 +56,13 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/tokuhirom/Data-NestedQuery/issues"
+         "web" : "https://github.com/tokuhirom/Data-NestedParams/issues"
       },
-      "homepage" : "https://github.com/tokuhirom/Data-NestedQuery",
+      "homepage" : "https://github.com/tokuhirom/Data-NestedParams",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/tokuhirom/Data-NestedQuery.git",
-         "web" : "https://github.com/tokuhirom/Data-NestedQuery"
+         "url" : "git://github.com/tokuhirom/Data-NestedParams.git",
+         "web" : "https://github.com/tokuhirom/Data-NestedParams"
       }
    },
    "version" : "0.03"

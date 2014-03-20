@@ -22,9 +22,10 @@ for (blocks) {
     my $expected = $_->expected;
 
     diag "--- Testing --- ";
-    diag ddf($input);
+    diag "--- input: " . ddf($input);
+    diag "--- expected: " . ddf($expected);
     my $got = expand_nested_params($input);
-    diag ddf($got);
+    diag "--- got: " . ddf($got);
     is_deeply( $got, $expected );
 }
 
@@ -41,6 +42,18 @@ __DATA__
 +{
     'a' => 'x',
 }
+
+===
+--- input
++[
+    'foo' => 'bar',
+    'foo' => 'quux',
+],
+--- expected
++{
+    'foo' => 'quux',
+}
+
 
 ===
 --- input
@@ -92,4 +105,3 @@ __DATA__
         }
     }
 }
-
