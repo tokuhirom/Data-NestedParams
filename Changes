@@ -2,6 +2,11 @@ Revision history for Perl extension Data-NestedParams
 
 {{$NEXT}}
 
+0.04 2014-03-20T01:24:19Z
+
+    - More rack compatiblity.
+    - Documentation.
+
 0.03 2014-03-13T07:49:03Z
 
     - s/convert_nested_query/expand_nested_params/g
