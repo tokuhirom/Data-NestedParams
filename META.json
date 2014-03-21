@@ -49,6 +49,7 @@
       "test" : {
          "requires" : {
             "Test::Base::Less" : "0.12",
+            "Test::Deep" : "0",
             "Test::More" : "0.98"
          }
       }
@@ -65,5 +66,5 @@
          "web" : "https://github.com/tokuhirom/Data-NestedParams"
       }
    },
-   "version" : "0.04"
+   "version" : "0.05"
 }

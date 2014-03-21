@@ -22,10 +22,6 @@ Ruby on Rails has a nice feature to create nested parameters that help with the 
 
 The way this structure is denoted is that when you construct a form the field names have a special syntax which is parsed.
 
-# TODO
-
-Support `collapse_nested_params()`.
-
 # LICENSE
 
 Copyright (C) Tokuhiro Matsuno.
