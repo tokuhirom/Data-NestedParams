@@ -1,13 +1,13 @@
 package Data::NestedParams;
 use 5.008005;
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 
 our $VERSION = "0.04";
 
 use parent qw(Exporter);
 
-our @EXPORT = qw(expand_nested_params);
+our @EXPORT = qw(expand_nested_params collapse_nested_params);
 
 # https://github.com/rack/rack/blob/master/lib/rack/utils.rb#L90
 # 9a74ba3b04f2dabe4741d2d82eae723d440c3aa2
@@ -78,6 +78,41 @@ sub expand_nested_params {
     return $ret;
 }
 
+our $COLLAPSE_KEY;
+
+sub _collapse {
+    my ($v, $r) = @_;
+
+    if (ref $v eq 'HASH') {
+        while (my ($k, $v) = each %$v) {
+            local $COLLAPSE_KEY = length($COLLAPSE_KEY) ? sprintf('%s[%s]', $COLLAPSE_KEY, $k) : $k;
+            _collapse($v, $r);
+        }
+    } elsif (ref $v eq 'ARRAY') {
+        for (@$v) {
+            local $COLLAPSE_KEY = $COLLAPSE_KEY . '[]';
+            _collapse($_, $r);
+        }
+    } elsif (!ref $v) {
+        $r->{$COLLAPSE_KEY} = $v;
+    } else {
+        my $ref = ref $v;
+        Carp::confess("${ref} is not supported by collapse_nested_params");
+    }
+}
+
+sub collapse_nested_params {
+    my $dat = shift;
+    if (ref $dat ne 'HASH') {
+        Carp::croak("The argument should be HashRef");
+    }
+
+    local $COLLAPSE_KEY = '';
+    my $r = +{};
+    _collapse($dat, $r);
+    return $r;
+}
+
 1;
 __END__
 
@@ -105,10 +140,6 @@ Data::NestedParams - entry[title]=foo&tags[]=art&tags[]=modern
 Ruby on Rails has a nice feature to create nested parameters that help with the organization of data in a form - parameters can be an arbitrarily deep nested structure.
 
 The way this structure is denoted is that when you construct a form the field names have a special syntax which is parsed.
-
-=head1 TODO
-
-Support C<collapse_nested_params()>.
 
 =head1 LICENSE
 
