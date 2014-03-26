@@ -17,7 +17,7 @@ sub parse {
 
     my @keys;
     while (1) {
-        if ($k =~ s/\[(\w+)\]\z//) {
+        if ($k =~ s/\[([a-zA-Z_-]+)\]\z//) {
             unshift @keys, ['%', $1];
         } elsif ($k =~ s/\[\]\z//) {
             unshift @keys, ['@'];
