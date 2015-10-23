@@ -94,7 +94,7 @@ sub _collapse {
             _collapse($_, $r);
         }
     } elsif (!ref $v) {
-        $r->{$COLLAPSE_KEY} = $v;
+        push @$r, $COLLAPSE_KEY => $v;
     } else {
         my $ref = ref $v;
         Carp::confess("${ref} is not supported by collapse_nested_params");
@@ -108,7 +108,7 @@ sub collapse_nested_params {
     }
 
     local $COLLAPSE_KEY = '';
-    my $r = +{};
+    my $r = [];
     _collapse($dat, $r);
     return $r;
 }
