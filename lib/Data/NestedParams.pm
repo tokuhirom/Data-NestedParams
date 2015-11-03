@@ -3,7 +3,7 @@ use 5.008005;
 use strict;
 use warnings FATAL => 'all';
 
-our $VERSION = "0.07";
+our $VERSION = "0.08";
 
 use parent qw(Exporter);
 
@@ -93,6 +93,8 @@ sub _collapse {
             local $COLLAPSE_KEY = $COLLAPSE_KEY . '[]';
             _collapse($_, $r);
         }
+    } elsif (ref $v eq 'JSON::XS::Boolean' || ref $v eq 'JSON::PP::Boolean') { # could use JSON::is_bool, but that would require extra dependency
+        $r->{$COLLAPSE_KEY} = $v;
     } elsif (!ref $v) {
         $r->{$COLLAPSE_KEY} = $v;
     } else {
